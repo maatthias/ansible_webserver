@@ -1,0 +1,22 @@
+---
+- name: Demo playbook to test callback plugin - Deployment
+  hosts: globus1-ext.nsls2.bnl.gov
+  tasks:
+    # - name: Install httpd package
+    #   dnf:
+    #     name: httpd
+    #     state: latest
+
+    - name: Start and enable httpd service
+      service:
+        name: httpd
+        enabled: true
+        state: started
+
+    - name: Create a custom index.html file
+      copy:
+        dest: /var/www/html/index.html
+        content: |
+          Enable SysAdmin Demo:
+          Ansible Profiling with Callback Plugin
+          Custom Web Page
