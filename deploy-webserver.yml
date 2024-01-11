@@ -21,6 +21,5 @@
       copy:
         dest: /var/www/html/index.html
         content: |
-          Enable SysAdmin Demo:
-          Ansible Profiling with Callback Plugin
-          Custom Web Page
+          SAMPLE WEBSERVER: 
+          !!!!! RUNNING !!!!!
