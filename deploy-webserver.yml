@@ -6,7 +6,6 @@
     #   dnf:
     #     name: httpd
     #     state: latest
-
     - name: Start and enable httpd service
       service:
         name: httpd
