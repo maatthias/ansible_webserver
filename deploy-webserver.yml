@@ -1,11 +1,16 @@
 ---
 - name: Demo playbook to test callback plugin - Deployment
-  hosts: globus1-ext.nsls2.bnl.gov
+
+  hosts:
+    - globus-dev.nsls2.bnl.gov
+    # - globus1-ext.nsls2.bnl.gov
+
   tasks:
-    # - name: Install httpd package
-    #   dnf:
-    #     name: httpd
-    #     state: latest
+    - name: Install httpd package
+      dnf:
+        name: httpd
+        state: latest
+
     - name: Start and enable httpd service
       service:
         name: httpd
