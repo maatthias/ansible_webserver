@@ -2,24 +2,26 @@
 - name: Demo playbook to test callback plugin - Deployment
 
   hosts:
-    - globus-dev.nsls2.bnl.gov
+    # - globus-dev.nsls2.bnl.gov
     # - globus1-ext.nsls2.bnl.gov
+    - msnyder-vm1.nsls2.bnl.local
 
   tasks:
     - name: Install httpd package
-      dnf:
+      ansible.builtin.dnf:
         name: httpd
-        state: latest
+        state: present
 
     - name: Start and enable httpd service
-      service:
+      ansible.builtin.service:
         name: httpd
         enabled: true
         state: started
 
     - name: Create a custom index.html file
-      copy:
+      ansible.builtin.copy:
         dest: /var/www/html/index.html
         content: |
-          SAMPLE WEBSERVER: 
+          SAMPLE WEBSERVER:
           !!!!! RUNNING !!!!!
+        mode: "0666"

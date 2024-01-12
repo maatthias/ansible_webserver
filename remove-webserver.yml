@@ -1,15 +1,16 @@
 ---
 - name: Demo playbook to test callback plugin - Remove
-  hosts: globus-dev.nsls2.bnl.gov
+  hosts: msnyder-vm1.nsls2.bnl.local
   tasks:
 
     - name: Stop and disable httpd service
-      service:
+      ansible.builtin.service:
         name: httpd
         enabled: false
         state: stopped
 
-    # - name: Remove httpd package
-    #   dnf:
-    #     name: httpd
-    #     state: absent
+    - name: Remove httpd package
+      ansible.builtin.dnf:
+        name: httpd
+        state: absent
+      when: ansible_webserver_remove_httpd is true
